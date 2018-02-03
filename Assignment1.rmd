@@ -1,0 +1,36 @@
+---
+title: "DATA 607 - Assignment 1"
+author: "Simon63"
+date: "February 3, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Libraries
+```{r libraries, warning=FALSE, message=FALSE}
+library(RCurl);
+```
+
+## Load Data into Data Frame
+```{r load_data}
+dfMashroom <- read.csv("https://raw.github.com/simon63/Assignment1/master/mashroom_dataset.csv", header = FALSE, stringsAsFactors = FALSE);
+head(dfMashroom);
+```
+
+## Create a Subset of Data and Assign Column Names
+```{r create_data_subset, echo=TRUE}
+dfMashroomSub1 <- dfMashroom[,c(1:4, 6)]
+colnames(dfMashroomSub1) <- c("edibility", "cap-shape", "cap-surface", "cap-color", "odor")
+head(dfMashroomSub1)
+```
+
+## Show Data in a Table Format
+```{r show_table}
+knitr::kable(
+  head(dfMashroomSub1),
+  caption = "Table example using knitr kable"
+)
+```
